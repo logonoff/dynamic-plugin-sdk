@@ -32,14 +32,14 @@ git fetch upstream && git rebase upstream/main
 To update dependencies and build all distributable SDK packages:
 
 ```sh
-yarn install
-yarn build-libs
+pnpm install
+pnpm build-libs
 ```
 
 Alternatively, you can build a specific SDK package:
 
 ```sh
-(cd ./packages/PKG_DIR ; yarn build)
+pnpm --filter ./packages/PKG_DIR build
 ```
 
 ## Check package versions

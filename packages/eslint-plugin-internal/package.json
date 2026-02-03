@@ -5,7 +5,7 @@
   "private": true,
   "main": "src/index.js",
   "scripts": {
-    "lint": "yarn run -T eslint $INIT_CWD"
+    "lint": "pnpm -w eslint $INIT_CWD"
   },
   "engines": {
     "node": ">=16"

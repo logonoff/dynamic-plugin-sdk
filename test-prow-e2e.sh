@@ -13,9 +13,9 @@ function copyArtifacts {
 
 trap copyArtifacts EXIT
 
-yarn install
-yarn build-libs
-yarn build-samples
+pnpm install
+pnpm build-libs
+pnpm build-samples
 
 # Create a virtual X11 display via Xvfb for use with Cypress E2E testing
 Xvfb :99 -screen 0 1920x1080x24 2>&1 > /dev/null &
@@ -25,7 +25,7 @@ export CYPRESS_CRASH_REPORTS=0
 export CYPRESS_COMMERCIAL_RECOMMENDATIONS=0
 
 # Start servers for sample app and sample plugin and run Cypress E2E tests
-yarn test-e2e
+pnpm test-e2e
 
 # Kill the Xvfb background process
 pkill Xvfb

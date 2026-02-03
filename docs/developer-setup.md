@@ -4,7 +4,7 @@
 
 - [Node.js](https://nodejs.org/) version used by
   [ci-operator-buildroot](../docker/Dockerfile.ci-operator-buildroot) image
-- [Yarn](https://yarnpkg.com/getting-started/install) package manager
+- [pnpm](https://pnpm.io/installation) package manager
 
 ## GitHub repo setup
 
@@ -26,8 +26,8 @@ your_user_name  https://github.com/your_user_name/dynamic-plugin-sdk.git (push)
 ## Steps after cloning
 
 ```sh
-yarn install
-yarn build-libs
+pnpm install
+pnpm build-libs
 ```
 
 Alternatively, run `test.sh` which builds, lints and tests all the packages.
@@ -35,8 +35,8 @@ Alternatively, run `test.sh` which builds, lints and tests all the packages.
 ## Lint and test specific file paths
 
 ```sh
-yarn eslint path/to/lint
-yarn jest path/to/test
+pnpm eslint path/to/lint
+pnpm jest path/to/test
 ```
 
 ## Update API reports
@@ -45,5 +45,5 @@ After building libs, you may receive a warning regarding outdated API reports. T
 update them, run:
 
 ```sh
-yarn api-extractor-local
+pnpm api-extractor-local
 ```

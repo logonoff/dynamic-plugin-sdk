@@ -5,7 +5,7 @@
   "private": true,
   "main": "src/index.ts",
   "scripts": {
-    "lint": "yarn run -T eslint $INIT_CWD",
-    "test": "yarn run -T test $INIT_CWD"
+    "lint": "pnpm -w eslint $INIT_CWD",
+    "test": "pnpm -w test $INIT_CWD"
   }
 }

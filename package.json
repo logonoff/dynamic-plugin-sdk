@@ -1,27 +1,24 @@
 {
   "name": "@monorepo/root",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "build": "yarn build-libs && yarn build-samples",
-    "build-libs": "yarn workspaces foreach -A --include '@openshift/*' run build",
-    "build-samples": "yarn workspaces foreach -A --include '@monorepo/sample-*' run build",
-    "run-samples": "yarn workspaces foreach -Apvi --include '@monorepo/sample-*' run http-server",
-    "lint": "yarn eslint packages",
-    "test": "yarn jest",
-    "test-component": "yarn sample-app-test-component",
-    "test-e2e": "start-server-and-test 'yarn run-samples' '127.0.0.1:9000|127.0.0.1:9001' 'yarn sample-app-test-e2e'",
+    "build": "pnpm build-libs && pnpm build-samples",
+    "build-libs": "pnpm --filter '@openshift/*' run build",
+    "build-samples": "pnpm --filter '@monorepo/sample-*' run build",
+    "run-samples": "pnpm --filter '@monorepo/sample-*' --parallel run http-server",
+    "lint": "pnpm eslint packages",
+    "test": "pnpm jest",
+    "test-component": "pnpm sample-app-test-component",
+    "test-e2e": "start-server-and-test 'pnpm run-samples' '127.0.0.1:9000|127.0.0.1:9001' 'pnpm sample-app-test-e2e'",
     "eslint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx --rulesdir ./packages/eslint-plugin-internal/src/runtime-rules",
-    "eslint-print-config": "yarn eslint --print-config",
+    "eslint-print-config": "pnpm eslint --print-config",
     "jest": "TZ=UTC jest --passWithNoTests",
     "jest-print-config": "jest --showConfig",
-    "sample-app-install-cypress": "yarn workspace @monorepo/sample-app run cypress install",
-    "sample-app-test-component": "yarn workspace @monorepo/sample-app run cypress run --component",
-    "sample-app-test-e2e": "yarn workspace @monorepo/sample-app run cypress run --e2e",
+    "sample-app-install-cypress": "pnpm --filter @monorepo/sample-app run cypress install",
+    "sample-app-test-component": "pnpm --filter @monorepo/sample-app run cypress run --component",
+    "sample-app-test-e2e": "pnpm --filter @monorepo/sample-app run cypress run --e2e",
     "api-extractor": "api-extractor run --typescript-compiler-folder ./node_modules/typescript/lib",
-    "api-extractor-local": "yarn workspaces foreach -A --include '@openshift/*' run api-extractor-local"
+    "api-extractor-local": "pnpm --filter '@openshift/*' run api-extractor-local"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
@@ -88,5 +85,5 @@
     "typescript": "~4.4.4",
     "webpack": "^5.100.0"
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "pnpm@10.28.2"
 }

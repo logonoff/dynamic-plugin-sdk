@@ -5,13 +5,11 @@
   "typescript.preferences.importModuleSpecifier": "project-relative",
   "search.exclude": {
     "**/.git": true,
-    "**/.yarn": true,
     "**/node_modules": true,
     "**/dist": true
   },
   "files.watcherExclude": {
     "**/.git": true,
-    "**/.yarn": true,
     "**/node_modules": true,
     "**/dist": true
   },

@@ -5,16 +5,17 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn clean && yarn webpack",
-    "build-prod": "yarn clean && NODE_ENV=production yarn webpack",
-    "analyze": "yarn clean && NODE_ENV=production ANALYZE_BUNDLES=true yarn webpack",
-    "lint": "yarn run -T eslint $INIT_CWD",
-    "webpack": "node -r ts-node/register ./node_modules/.bin/webpack",
+    "build": "pnpm clean && pnpm webpack",
+    "build-prod": "pnpm clean && NODE_ENV=production pnpm webpack",
+    "analyze": "pnpm clean && NODE_ENV=production ANALYZE_BUNDLES=true pnpm webpack",
+    "lint": "pnpm -w eslint $INIT_CWD",
+    "webpack": "NODE_OPTIONS='--require ts-node/register' pnpm exec webpack",
     "http-server": "http-server dist -p 9000 -c-1"
   },
   "devDependencies": {
-    "@openshift/dynamic-plugin-sdk": "portal:../lib-core",
-    "@openshift/dynamic-plugin-sdk-webpack": "portal:../lib-webpack",
+    "@monorepo/common": "workspace:*",
+    "@openshift/dynamic-plugin-sdk": "workspace:*",
+    "@openshift/dynamic-plugin-sdk-webpack": "workspace:*",
     "@patternfly/react-core": "^6.4.0",
     "@patternfly/react-icons": "^6.4.0",
     "@patternfly/react-styles": "^6.4.0",
@@ -37,8 +38,5 @@
     "webpack": "^5.100.0",
     "webpack-bundle-analyzer": "~5.0.1",
     "webpack-cli": "^5.0.1"
-  },
-  "installConfig": {
-    "hoistingLimits": "dependencies"
   }
 }

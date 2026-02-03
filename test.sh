@@ -7,22 +7,22 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 # Print system information
 echo "node $(node -v)"
 echo "npm $(npm -v)"
-echo "yarn $(yarn -v)"
+echo "pnpm $(pnpm -v)"
 
 # Install dependencies
-yarn install --immutable
+pnpm install --frozen-lockfile
 
 # Build packages
-yarn build
+pnpm build
 
 # Analyze code for potential problems
-yarn lint
+pnpm lint
 
 # Run unit tests
-yarn test
+pnpm test
 
 # Run Cypress component tests
-yarn test-component
+pnpm test-component
 
 # Upload code coverage
 ./prow-codecov.sh 2>/dev/null

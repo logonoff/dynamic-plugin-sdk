@@ -17,13 +17,17 @@
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepack": "yarn build",
-    "prepublishOnly": "yarn test",
-    "build": "rm -rf dist && yarn run -T rollup -c && yarn api-extractor",
-    "lint": "yarn run -T eslint $INIT_CWD",
-    "test": "yarn run -T test $INIT_CWD",
-    "api-extractor": "yarn run -T api-extractor -c $INIT_CWD/api-extractor.json",
-    "api-extractor-local": "yarn run api-extractor --local"
+    "prepack": "pnpm build",
+    "prepublishOnly": "pnpm test",
+    "build": "rm -rf dist && pnpm exec rollup -c && pnpm api-extractor",
+    "lint": "pnpm -w eslint $INIT_CWD",
+    "test": "pnpm -w jest $INIT_CWD",
+    "api-extractor": "pnpm exec api-extractor run -c $INIT_CWD/api-extractor.json",
+    "api-extractor-local": "pnpm api-extractor --local"
+  },
+  "devDependencies": {
+    "@monorepo/common": "workspace:*",
+    "@openshift/dynamic-plugin-sdk": "workspace:*"
   },
   "peerDependencies": {
     "webpack": "^5.100.0"
